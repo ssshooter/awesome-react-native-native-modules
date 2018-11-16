@@ -1,9 +1,9 @@
 
-## How to create a Native Module Package
+## 如何创建一个原生模块包
 
-- Create a Java class for your Native Module Package by extending from ReactPackage, ideally it can look like below:
+- 通过拓展 ReactPackage 为你的原生模块包创建 Java class，这么写就挺好：
 
-- Override `createNativeModules` & `createViewManagers` methods
+- Override `createNativeModules` 和 `createViewManagers` 方法
 
 ```java
 
@@ -19,7 +19,7 @@ public class MyNativePackage implements ReactPackage {
 
 ```
 
-- Add your Native Modules to `createNativeModules` method
+- 在 `createNativeModules` 方法中添加原生模块
 
 ```java
 public List<NativeModule> createNativeModules(ReactApplicationContext reactContext) {
@@ -30,7 +30,7 @@ public List<NativeModule> createNativeModules(ReactApplicationContext reactConte
 }
 ```
 
-- Add your Native Module UI Components to `createViewManagers` method
+- 在 `createViewManagers` 方法中添加原生 UI 组件
 
 ```java
 public List<ViewManager> createViewManagers(ReactApplicationContext reactContext) {
@@ -41,7 +41,7 @@ public List<ViewManager> createViewManagers(ReactApplicationContext reactContext
 }
 ```
 
-## Creating a Module Class
+## 创建模块 Class
 
 - We’ll start by creating the MyNativeModule class, and extending ReactContextBaseJavaModule.
 
