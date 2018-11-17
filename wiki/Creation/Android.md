@@ -1,9 +1,9 @@
 
 ## 如何创建一个原生模块包
 
-- 通过拓展 ReactPackage 为你的原生模块包创建 Java 类，这么写就挺好：
+- 通过继承 ReactPackage 为你的原生模块包创建 Java 类，可以这么写：
 
-- Override `createNativeModules` 和 `createViewManagers` 方法
+- 覆盖 `createNativeModules` 和 `createViewManagers` 方法
 
 ```java
 
@@ -41,9 +41,9 @@ public List<ViewManager> createViewManagers(ReactApplicationContext reactContext
 }
 ```
 
-## 创建模块 Class
+## 创建原生模块
 
-- 先通过 extend ReactContextBaseJavaModule来创建 MyNativeModule 类。
+- 先通过继承 ReactContextBaseJavaModule 创建 MyNativeModule 类。
 
 ```java
 public class MyNativeModule extends ReactContextBaseJavaModule {
@@ -53,7 +53,7 @@ public class MyNativeModule extends ReactContextBaseJavaModule {
 }
 ```
 
-- 为了让 React Native 在 NativeModules 中找到我们的模块，我们还需要 override getName 方法。
+- 为了让 React Native 在 NativeModules 中找到我们的模块，我们还需要覆盖 getName 方法。
 
 ```java
 @Override
@@ -110,7 +110,7 @@ public class RNNativeComponent extends ViewGroupManager<ViewGroup> {
 }
 ```
 
-- Override `getName` 方法：
+- 覆盖 `getName` 方法：
 
 ```java
 @Override 
@@ -119,7 +119,7 @@ public String getName() {
 } 
 ```
 
-- Override `createViewInstance` 方法，返回你的自定义原生组件
+- 覆盖 `createViewInstance` 方法，返回你的自定义原生组件
 
 ```java
 @Override 
