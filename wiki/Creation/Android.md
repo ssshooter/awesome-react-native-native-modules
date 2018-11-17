@@ -1,7 +1,7 @@
 
 ## 如何创建一个原生模块包
 
-- 通过拓展 ReactPackage 为你的原生模块包创建 Java class，这么写就挺好：
+- 通过拓展 ReactPackage 为你的原生模块包创建 Java 类，这么写就挺好：
 
 - Override `createNativeModules` 和 `createViewManagers` 方法
 
@@ -43,7 +43,7 @@ public List<ViewManager> createViewManagers(ReactApplicationContext reactContext
 
 ## 创建模块 Class
 
-- We’ll start by creating the MyNativeModule class, and extending ReactContextBaseJavaModule.
+- 先通过 extend ReactContextBaseJavaModule来创建 MyNativeModule 类。
 
 ```java
 public class MyNativeModule extends ReactContextBaseJavaModule {
@@ -53,7 +53,7 @@ public class MyNativeModule extends ReactContextBaseJavaModule {
 }
 ```
 
-- That’s a good start, but in order for React Native to find our module in NativeModules we’ll need to override the getName method.
+- 为了让 React Native 在 NativeModules 中找到我们的模块，我们还需要 override getName 方法。
 
 ```java
 @Override
@@ -62,9 +62,9 @@ public String getName() {
 }
 ```
 
-- We now have a fully functional (if totally useless) native module that we can import in our JavaScript code. Let’s make it do something a bit more interesting.
+- 现在我们已经拥有一个可以导入到 JavaScript 代码的原生模块，现在可以向其中加入功能。
 
-- Exposing Module Methods: Let's defines an `Show` method that takes a config object and success and cancel callbacks.
+- 暴露模块方法：定义一个接受设置参数、成功回调和失败回调的 `Show` 方法。
 
 ```java
 public class MyNativeModule extends ReactContextBaseJavaModule {
@@ -80,7 +80,7 @@ public class MyNativeModule extends ReactContextBaseJavaModule {
 }
 ```
 
-- Invoking Module Method from JavaScript
+- 在 JavaScript 中调用模块方法
 
 ```javascript
 import { NativeModules } from "react-native";
@@ -95,14 +95,14 @@ MyNativeModule.Show(
 
 ```
 
-> **Note**:
-> - Module method are just for static invocation, it cannot be part of react tree
+> **注意**:
+> - 模块方法只提供静态引用，不包含于 react 树中。
 
-## Creating a Native View Component
+## 创建原生 UI 组件
 
-- If you want to render a Native View component in react tree
+- 如果你需要在 react 树中渲染一个原声 UI 组件
 
-- Create a Java Class extending from ReactNative ViewGroupManager
+- 创建一个继承 ReactNative ViewGroupManager 的 Java 类
 
 ```java
 public class RNNativeComponent extends ViewGroupManager<ViewGroup> {
@@ -110,7 +110,7 @@ public class RNNativeComponent extends ViewGroupManager<ViewGroup> {
 }
 ```
 
-- Override `getName` method:
+- Override `getName` 方法：
 
 ```java
 @Override 
@@ -119,16 +119,16 @@ public String getName() {
 } 
 ```
 
-- Override `createViewInstance` method to return your custom native component
+- Override `createViewInstance` 方法，返回你的自定义原生组件
 
 ```java
 @Override 
   protected FrameLayout createViewInstance(final ThemedReactContext reactContext) {
-      return //Your-Native-Component-Wrappered-Inside-FrameLayout
+      return //用 FrameLayout 包裹的自定义原生组件
   }
 ```
 
-- Creating native prop methods
+- 创建原生 prop 方法
 
 ```java
   @ReactProp(name = "prop_name") 
@@ -137,7 +137,7 @@ public String getName() {
 ```
 
 
-- Accessing in JavaScript
+- JavaScript 中使用
 
 ```javascript
 import { requireNativeComponent } from "react-native"
