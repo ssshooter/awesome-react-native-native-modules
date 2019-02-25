@@ -58,7 +58,7 @@ const MyNativeModule = NativeModules.MyNativeModule;
 MyNativeModule.Show(() => {})
 ```
 
-## 创建原声 View 组建
+## 创建原生 View 组建
 
 - 创建 view 方法，返回你的原声组件
 
