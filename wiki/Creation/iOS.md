@@ -15,7 +15,7 @@ RCT_EXPORT_METHOD(funcName:(NSString *)onlyString
 
 上面的例子暴露到 JavaScript 是 `NativeModules.ModuleName.funcName`
 
-## 创建 Native Module Package
+## 创建原生模块包
 
 我们需要在项目中添加两个文件：头文件和源文件。
 
@@ -40,7 +40,7 @@ RCT_EXPORT_MODULE();
 @end
 ```
 
-## 创建 Module Method
+## 创建模块方法
 
 
 
@@ -58,7 +58,7 @@ const MyNativeModule = NativeModules.MyNativeModule;
 MyNativeModule.Show(() => {})
 ```
 
-## 创建 Native View Component
+## 创建原声 View 组建
 
 - 创建 view 方法，返回你的原声组件
 
