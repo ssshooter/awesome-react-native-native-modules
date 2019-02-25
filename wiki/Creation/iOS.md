@@ -1,11 +1,11 @@
 
-## Macros
+## Macro
 
-- **RCTBridgeModule**: RCTBridgeModule is a protocol. It provides an interface for registering a bridge module RCTBridgeModule `@protocol RCTBridgeModule`
+- **RCTBridgeModule**: RCTBridgeModule 是一个 protocol，它为注册 bridge 模块 RCTBridgeModule `@protocol RCTBridgeModule` 提供了一个接口
 
-- **RCT_EXPORT_MODULE(js_name)**: Register your module with the bridge during class implementation. It has an argument js_name which is optional and it is used as the JS module name. In case if it is not defined, Objective-C class name will be defined as the JS module name.
+- **RCT_EXPORT_MODULE(js_name)**: 在 class implementation 时使用 bridge 注册你的模块。参数 js_name 是可选的，用作 JS 模块的名称，若不定义，将会默认使用 Objective-C 的 class 名
 
-- **RCT_EXPORT_METHOD(method)\RCT_REMAP_METHOD(, method)**: Bridge modules can also define methods that are exported to JavaScript as `NativeModules.ModuleName.methodName`
+- **RCT_EXPORT_METHOD(method)\RCT_REMAP_METHOD(, method)**: bridge 模块亦可定义方法，这些方法可以作为 `NativeModules.ModuleName.methodName` 输出到 JavaScript。
 
 ```objectivec
 RCT_EXPORT_METHOD(funcName:(NSString *)onlyString
@@ -13,11 +13,11 @@ RCT_EXPORT_METHOD(funcName:(NSString *)onlyString
   { ... }
 ```
 
-This is exposed to JavaScript as `NativeModules.ModuleName.funcName`
+上面的例子暴露到 JavaScript 是 `NativeModules.ModuleName.funcName`
 
-## How to create a Native Module Package
+## 创建 Native Module Package
 
-We’ll need to add two files to our project: a header file and its implementation file.
+我们需要在项目中添加两个文件：头文件和源文件。
 
 
 
@@ -40,16 +40,16 @@ RCT_EXPORT_MODULE();
 @end
 ```
 
-## Creating a Module Method
+## 创建 Module Method
 
-We can now add a method to actually get the system volume in Volume.m (see this commit in our example code):
+
 
 ```objectivec
 RCT_EXPORT_METHOD(Show:(RCTResponseSenderBlock)callback) {
 }
 ```
 
-- Invoking Module Method from JavaScript
+- JavaScript 中引入模块方法
 
 ```javascript
 import { NativeModules } from 'react-native'
@@ -58,9 +58,9 @@ const MyNativeModule = NativeModules.MyNativeModule;
 MyNativeModule.Show(() => {})
 ```
 
-## Creating a Native View Component
+## 创建 Native View Component
 
-- Create a view method to return your native component
+- 创建 view 方法，返回你的原声组件
 
 ```objectivec
 - (UIView *)view {
@@ -68,7 +68,7 @@ MyNativeModule.Show(() => {})
 }
 ```
 
-- Creating native prop methods
+- 创建原生 prop 方法
 
 ```objectivec
 RCT_CUSTOM_VIEW_PROPERTY(prop, DATA_TYPE_OF_PROP, YOUR_NATIVE_COMPONENT_CLASS) {
@@ -76,7 +76,7 @@ RCT_CUSTOM_VIEW_PROPERTY(prop, DATA_TYPE_OF_PROP, YOUR_NATIVE_COMPONENT_CLASS) {
 ```
 
 
-- Accessing in JavaScript
+- 在 JavaScript 中使用
 
 ```javascript
 import { requireNativeComponent } from "react-native"
